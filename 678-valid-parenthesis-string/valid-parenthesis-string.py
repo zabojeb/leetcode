@@ -1,11 +1,11 @@
 class Solution:
     def checkValidString(self, s: str) -> bool:
         mins, maxs = 0, 0
-        for c in s:
-            if c == "(":
+        for char in s:
+            if char == "(":
                 mins += 1
                 maxs += 1
-            elif c == ")":
+            elif char == ")":
                 mins -= 1
                 maxs -=1
             else:
