@@ -1,9 +1,13 @@
+# My favorite solution :)
+
 class Solution:
     def deckRevealedIncreasing(self, deck: List[int]) -> List[int]:
-        result = collections.deque()
+        deck.sort()
+        
+        ans = deque([deck.pop()])
+        
+        for card in reversed(deck):
+            ans.appendleft(ans.pop())
+            ans.appendleft(card)
 
-        for card in reversed(sorted(deck)):
-            result.rotate()
-            result.appendleft(card)
-
-        return list(result)
+        return list(ans)
