@@ -1,5 +1,3 @@
-# No, it's my favorite!
-
 class Solution:
     def deckRevealedIncreasing(self, deck):
         deck.sort(reverse=True)
