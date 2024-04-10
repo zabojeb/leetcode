@@ -3,10 +3,15 @@ from collections import deque
 class Solution:
     def deckRevealedIncreasing(self, deck: List[int]) -> List[int]:
         deck.sort()
-        ans = deque([deck.pop()])
-        
-        for card in reversed(deck):
-            ans.appendleft(ans.pop())
-            ans.appendleft(card)
 
-        return list(ans)
+        n = len(deck)
+        ans = [0] * n
+
+        queue = deque(range(n))
+        
+        for card in deck:
+            ans[queue.popleft()] = card
+            if queue:
+                queue.append(queue.popleft())
+        
+        return ans
