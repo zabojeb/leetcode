@@ -1,9 +1,12 @@
 class Solution:
-    def deckRevealedIncreasing(self, deck):
-        deck.sort(reverse=True)
-        result = [deck[0]]
-
-        for card in deck[1:]:
-            result = [card] + [result[-1]] + result[:-1]
-
+    def deckRevealedIncreasing(self, deck: List[int]) -> List[int]:
+        deck.sort() 
+        
+        result = []  
+        
+        for card in reversed(deck):
+            if result: 
+                result.insert(0, result.pop())  
+            result.insert(0, card)  
+        
         return result
