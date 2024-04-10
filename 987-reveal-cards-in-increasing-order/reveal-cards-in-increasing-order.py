@@ -1,13 +1,9 @@
-from queue import Queue
-
 class Solution:
-    def deckRevealedIncreasing(self, deck: List[int]) -> List[int]:
-        q = Queue()
+    def deckRevealedIncreasing(self, deck):
+        deck.sort(reverse=True)
+        result = [deck[0]]
 
-        for card in reversed(sorted(deck)):
-            if not q.empty():
-                q.put(q.get())
-            q.put(card)
+        for card in deck[1:]:
+            result = [card] + [result[-1]] + result[:-1]
 
-        return reversed(list(q.queue))
-
+        return result
