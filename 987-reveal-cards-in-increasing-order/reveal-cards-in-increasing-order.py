@@ -1,17 +1,15 @@
-from collections import deque
-
 class Solution:
     def deckRevealedIncreasing(self, deck: List[int]) -> List[int]:
         deck.sort()
-
         n = len(deck)
         ans = [0] * n
-
-        queue = deque(range(n))
+        indices = list(range(n))
         
-        for card in deck:
-            ans[queue.popleft()] = card
-            if queue:
-                queue.append(queue.popleft())
+        i = 0
+        while indices:
+            ans[indices.pop(0)] = deck[i]
+            if indices:
+                indices.append(indices.pop(0))
+            i += 1
         
         return ans
