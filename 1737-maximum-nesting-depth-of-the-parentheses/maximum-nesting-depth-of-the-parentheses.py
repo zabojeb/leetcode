@@ -6,10 +6,8 @@ class Solution:
         for i in s:
             if i == "(":
                 count += 1
-                if max_n < count:
-                    max_n = count
+                max_n = max(max_n, count)
             elif i == ")":
                 count -= 1
         
         return max_n
-        
