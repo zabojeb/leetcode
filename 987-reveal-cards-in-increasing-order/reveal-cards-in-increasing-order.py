@@ -1,12 +1,11 @@
+# Omg, its way too elegant
+
 class Solution:
     def deckRevealedIncreasing(self, deck: List[int]) -> List[int]:
-        deck.sort(reverse=True)
-        result = deque()
+        q = collections.deque()
 
-        for card in deck:
-            if result:
-                result.appendleft(result.pop())
-                
-            result.appendleft(card)
+        for card in sorted(deck, reverse=True):
+            q.rotate()
+            q.appendleft(card)
 
-        return list(result)
+        return list(q)
