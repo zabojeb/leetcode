@@ -3,5 +3,7 @@ class Solution:
         xor = 0
         for num in nums:
             xor ^= num
+        
+        xor ^= k
 
-        return bin(xor ^ k)[2:].count("1")
+        return bin(xor).count("1")
