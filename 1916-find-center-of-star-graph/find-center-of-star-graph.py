@@ -1,8 +1,8 @@
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:
-        arr = edges[0] + edges[1]
+        e1, e2 = edges[0], edges[1]
 
-        for i in range(4):
-            if arr[i] in arr[:i]:
-                return arr[i]
-        return -1
+        if e1[0] in e2:
+            return e1[0]
+        else:
+            return e1[1]
